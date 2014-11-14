@@ -7,4 +7,4 @@ class IndexTest(TestCase):
     def test_index_page(self):
         client = Client()
         response = client.get(u'/')
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 200)
