@@ -1,0 +1,53 @@
+[
+    {
+        "pk": 1,
+        "model": "auth.user",
+        "fields": {
+            "username": "cifer",
+            "first_name": "",
+            "last_name": "",
+            "is_active": true,
+            "is_superuser": true,
+            "is_staff": true,
+            "last_login": "2014-11-05T10:53:16.325Z",
+            "groups": [],
+            "user_permissions": [],
+            "password": "pbkdf2_sha256$12000$G8shn478Aad8$kugAuBHXf6epNlepDhVKKCn59V8dkYRzZFoGXR7Kwg4=",
+            "email": "cifer@yandex.ru",
+            "date_joined": "2014-11-04T09:01:32.123Z"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "auth.user",
+        "fields": {
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "is_active": true,
+            "is_superuser": true,
+            "is_staff": true,
+            "last_login": "2014-11-04T10:14:05.140Z",
+            "groups": [],
+            "user_permissions": [],
+            "password": "pbkdf2_sha256$12000$nXAuGB4527tq$az3qo1zFMVmHctT/U60I9WSQegwrzWwgrTCqsrdiDKo=",
+            "email": "admin@example.com",
+            "date_joined": "2014-11-04T10:14:05.140Z"
+        }
+    },
+    {
+        "pk": 1,
+        "model": "hello.aboutuser",
+        "fields": {
+            "username": "cifer",
+            "bio": "Studied in School #22 in Kramators'k \r\nthen in DonDABA in Makiyivka.",
+            "first_name": "Artem",
+            "last_name": "Antsyferov",
+            "other_contacts": "Phone: +38-050-956-48-08\r\nVKid: 10549929",
+            "skype": "antiyoma",
+            "birth_date": "1986-08-23",
+            "jabber": "cifer@42cc.co",
+            "email": "cifer@yandex.ru"
+        }
+    }
+]
