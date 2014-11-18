@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+    About Me
+{% endblock %}
+{% block content %}
+    <h1 class="text-center">42 Coffee Cups Test Assignment</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <p><b>First Name:</b> {{ about_me.first_name }}</p>
+
+                <p><b>Last Name:</b> {{ about_me.last_name }}</p>
+
+                <p><b>Date of Birth:</b> {{ about_me.birth_date }}</p>
+
+                <p><b>Bio:</b><br/>{{ about_me.bio | linebreaksbr }}</p>
+
+
+            </div>
+
+            <div class="col-xs-6">
+
+                <p><b>Contacts:</b></p>
+
+                <p><b>Email:</b> {{ about_me.email }}</p>
+
+                <p><b>Jabber:</b> {{ about_me.jabber }}</p>
+
+                <p><b>Skype:</b> {{ about_me.skype }}</p>
+
+                <p><b>Other contacts:</b><br/>{{ about_me.other_contacts | linebreaksbr }}</p>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
