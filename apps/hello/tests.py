@@ -21,6 +21,6 @@ class TestHttpRequests(TestCase):
         response = self.client.get(reverse(u'requests'))
         self.assertEqual(response.status_code, 200)
 
-    def test_Requests_page_contains_header(self):
+    def test_requests_page_contains_header(self):
         response = self.client.get(reverse(u'requests'))
         self.assertContains(response, u'h1')
