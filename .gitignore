@@ -13,4 +13,5 @@ build
 .noseids
 media
 static
+uploads
 *.dat
