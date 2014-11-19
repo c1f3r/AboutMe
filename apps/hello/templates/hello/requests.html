@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Latest 10 HttpRequests{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1 class="text-center">Latest 10 HttpRequests</h1>
+
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <th>#</th>
+                    <th>Host</th>
+                    <th>Path</th>
+                    <th>Method</th>
+                    <th>Date/Time</th>
+                    <th>User</th>
+                </tr>
+
+                {% for http_request in requests %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ http_request.host }}</td>
+                        <td>{{ http_request.path }}</td>
+                        <td>{{ http_request.method }}</td>
+                        <td>{{ http_request.date_time }}</td>
+                        <td>{{ http_request.user }}</td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+{% endblock %}
