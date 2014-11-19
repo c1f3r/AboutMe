@@ -7,6 +7,7 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'AboutUser'
+        db.delete_table(u'hello_aboutuser')
         db.create_table(u'hello_aboutuser', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('username', self.gf('django.db.models.fields.CharField')(max_length=20)),
@@ -22,6 +23,7 @@ class Migration(SchemaMigration):
         db.send_create_signal(u'hello', ['AboutUser'])
 
         # Adding model 'HttpRequestLog'
+        db.delete_table(u'hello_httprequestlog')
         db.create_table(u'hello_httprequestlog', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('host', self.gf('django.db.models.fields.CharField')(max_length=100)),
