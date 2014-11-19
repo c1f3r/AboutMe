@@ -1,7 +1,8 @@
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
-from models import HttpRequestLog
+from models import HttpRequestLog, AboutUser
+
 
 
 # Create your tests here.
@@ -17,6 +18,16 @@ class IndexTest(TestCase):
     def test_index_page_contains_first_name(self):
         response = self.client.get(reverse(u'index'))
         self.assertContains(response, u'Artem')
+
+    def test_index_shows_correct_user(self):
+        AboutUser.objects.create(username=u'petryk', first_name=u'Petryk', last_name=u'Pyato4kin',
+                                 birth_date='2000-01-01',
+                                 bio='I was born with the wrong sign in the wrong house\nWith the wrong ascendancy',
+                                 email='p.pyato4kin@example.com', jabber='p.pyato4kin@42cc.co', skype='p.pyato4kin',
+                                 other_contacts='')
+        response = self.client.get(reverse('index'))
+        self.assertContains(response, u'Artem')
+        self.assertNotContains(response, u'Petryk')
 
 
 class TestHttpRequests(TestCase):
