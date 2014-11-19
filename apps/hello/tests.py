@@ -4,10 +4,6 @@ from django.test import TestCase
 from models import HttpRequestLog, AboutUser
 
 
-
-# Create your tests here.
-
-
 class IndexTest(TestCase):
     fixtures = [u'initial_data.json']
 
@@ -42,6 +38,19 @@ class TestHttpRequests(TestCase):
     def test_requests_middleware_works(self):
         http_requests = HttpRequestLog.objects.all()
         self.assertFalse(http_requests)
-        self.client.get(reverse('index'))
+        self.client.get(reverse(u'index'))
         http_requests = HttpRequestLog.objects.all()
         self.assertEqual(http_requests.count(), 1)
+
+    def test_only_ten_latest_requests_are_displayed(self):
+        for i in range(10):
+            self.client.get(reverse(u'index'))
+            self.client.get(reverse(u'admin:index'))
+        requests = HttpRequestLog.objects.all()
+        response = self.client.get(reverse(u'requests'))
+        self.assertEqual(requests.count(), 21)
+        self.assertEqual(response.context[u'requests'].count(), 10)
+        latest_ten_requests = HttpRequestLog.objects.order_by(u'-date_time')[:10]
+        for i in xrange(10):
+            self.assertEqual(latest_ten_requests[i].path, response.context[u'requests'][i].path)
+            self.assertEqual(latest_ten_requests[i].date_time, response.context[u'requests'][i].date_time)
