@@ -7,6 +7,7 @@ from django.test import TestCase, Client
 class IndexTest(TestCase):
     fixtures = [u'initial_data.json']
 
+
     def setUp(self):
         self.client = Client()
 
