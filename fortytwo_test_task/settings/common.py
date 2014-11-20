@@ -56,6 +56,12 @@ MIDDLEWARE_CLASSES = (
     'apps.hello.middleware.HttpRequestLogMiddleware',
 )
 
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'apps.hello.context_processors.settings_context_processor',
+)
+
 ROOT_URLCONF = 'fortytwo_test_task.urls'
 
 WSGI_APPLICATION = 'fortytwo_test_task.wsgi.application'
