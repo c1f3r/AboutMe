@@ -14,6 +14,8 @@ urlpatterns = patterns('',
                        url(r'^$', ViewInfoAboutMe.as_view(), name='index'),
                        url(r'^requests/$', HttpRequestList.as_view(), name='requests'),
                        url(r'^edit_info/$', login_required(EditInfoAboutMe.as_view()), name='edit_info'),
+                       url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
+
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # this is for development should be removed

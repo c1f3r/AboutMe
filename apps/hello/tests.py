@@ -69,9 +69,6 @@ class TestEditInfoPage(TestCase):
 
     def test_only_authorized_access(self):
         response = self.client.get(reverse(u'edit_info'))
-
-        # not sure which code when not authorized, think it 302. Need change to assertEqual when get know exactly
-        self.assertNotEqual(response.status_code, 200)
-
+        self.assertEqual(response.status_code, 302)
         self.client.login(username=u'admin', password=u'admin')
         self.assertEqual(response.status_code, 200)
