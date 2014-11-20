@@ -60,6 +60,7 @@ MIDDLEWARE_CLASSES = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
+    "django.core.context_processors.request",
     'apps.hello.context_processors.settings_context_processor',
 )
 
