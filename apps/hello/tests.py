@@ -54,3 +54,12 @@ class TestHttpRequests(TestCase):
         for i in xrange(10):
             self.assertEqual(latest_ten_requests[i].path, response.context[u'requests'][i].path)
             self.assertEqual(latest_ten_requests[i].date_time, response.context[u'requests'][i].date_time)
+
+
+class TestSettingsContextProcessor(TestCase):
+
+    def test_settings_context_processor(self):
+        response = self.client.get(reverse(u'index'))
+        self.assertTrue(response.context[u'settings'])
+        response = self.client.get(reverse(u'requests'))
+        self.assertTrue(response.context[u'settings'])
