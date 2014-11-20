@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block title %}Edit info about me{% endblock %}
+{% block content %}
+    {% load widget_tweaks %}
+    <div class="container">
+        <h1 class="text-center">Edit info about me</h1>
+
+        <div class="row">
+            <form enctype="multipart/form-data" action="" method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group-xs">
+                            <div class="col-xs-3">
+                                {{ form.first_name.label_tag }}
+                            </div>
+                            <div class="col-xs-9">
+                                {{ form.first_name|add_class:"form-control" }}
+                            </div>
+                        </div>
+                        <div class="form-group-xs">
+                            <div class="col-xs-3">
+                                {{ form.last_name.label_tag }}
+                            </div>
+                            <div class="col-xs-9">
+                                {{ form.last_name|add_class:"form-control" }}
+                            </div>
+                        </div>
+                        <div class="form-group-xs">
+                            {{ form.birth_date.errors }}
+                            <div class="col-xs-3">
+                                {{ form.birth_date.label_tag }}
+                            </div>
+
+                            <div class="col-xs-9">
+                                {{ form.birth_date|add_class:"form-control" }}
+                            </div>
+                        </div>
+                        <div class="form-group-xs">
+                            <div class="col-xs-3">
+                                {{ form.avatar.label_tag }}
+                            </div>
+                            <div class="col-xs-9">
+                                {{ form.avatar|add_class:"form-control" }}
+                            </div>
+                            <br/>
+
+                            <div class="img-thumbnail text-center">
+                                {% if form.avatar.value %}
+                                    <img src="{{ form.avatar.value.url }}">
+                                {% else %}
+                                    <img src="{{ settings.MEDIA_URL }}img/no-avatar.jpg">
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group-xs">
+                            {{ form.email.errors }}
+                            <div class="col-xs-3">
+                                {{ form.email.label_tag }}
+                            </div>
+                            <div class="col-xs-9">
+                                {{ form.email|add_class:"form-control" }}
+                            </div>
+                        </div>
+                        <div class="form-group-xs">
+                            <div class="col-xs-3">
+                                {{ form.jabber.label_tag }}
+                            </div>
+                            <div class="col-xs-9">
+                                {{ form.jabber|add_class:"form-control" }}
+                            </div>
+                        </div>
+                        <div class="form-group-xs">
+                            <div class="col-xs-3">
+                                {{ form.skype.label_tag }}
+                            </div>
+                            <div class="col-xs-9">
+                                {{ form.skype|add_class:"form-control col-xs-9" }}
+                            </div>
+                        </div>
+                        <div class="form-group-xs">
+                            <div class="col-xs-3">
+                                {{ form.other_contacts.label_tag }}
+                            </div>
+                            {{ form.other_contacts|add_class:"form-control"|attr:"rows:4" }}
+                        </div>
+                        <div class="form-group-xs">
+                            <div class="col-xs-3">
+                                {{ form.bio.label_tag }}
+                            </div>
+                            <br/>
+                            {{ form.bio|add_class:"form-control"|attr:"rows:4" }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <input type="submit" class="btn btn-success" value="Update Info"/>
+
+                    <input type="reset" class="btn btn-warning" value="Reset"/>
+                    <a href="{% url 'index' %}">Get Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
