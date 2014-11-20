@@ -24,7 +24,7 @@ class AboutUser(models.Model):
         return "{0} {1}".format(self.first_name, self.last_name)
 
     def get_absolute_url(self):
-        return reverse('index')
+        return reverse(u'index')
 
 
 class HttpRequestLog(models.Model):

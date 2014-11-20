@@ -71,4 +71,11 @@ class TestEditInfoPage(TestCase):
         response = self.client.get(reverse(u'edit_info'))
         self.assertEqual(response.status_code, 302)
         self.client.login(username=u'admin', password=u'admin')
+        response = self.client.get(reverse(u'edit_info'))
         self.assertEqual(response.status_code, 200)
+
+    def test_only_correct_info_allowed(self):
+        self.client.login(username=u'admin', password=u'admin')
+        response = self.client.post(reverse(u'edit_info'), {'birth_date': 'today'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['form']['birth_date'].errors, [u'Enter a valid date.'])

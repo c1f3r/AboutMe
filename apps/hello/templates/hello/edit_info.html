@@ -97,13 +97,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="row text-center">
-                    <input type="submit" class="btn btn-success" value="Update Info"/>
+                <br>
+                <div class="row">
+                    <input type="submit" class="btn btn-success" value="Save"/>
 
-                    <input type="reset" class="btn btn-warning" value="Reset"/>
-                    <a href="{% url 'index' %}">Get Back</a>
+                    <a href="{% url 'index' %}">Cancel</a>
                 </div>
             </form>
+        </div>
+        <hr>
+        <div class="row">
+            <a href="{% url 'requests' %}">10 Latest Requests</a>
         </div>
     </div>
 {% endblock %}

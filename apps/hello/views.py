@@ -1,10 +1,12 @@
 from PIL import Image
-from django.core.urlresolvers import reverse_lazy
 from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
+from forms import EditInfoForm
+
 from models import AboutUser, HttpRequestLog
+
 
 
 
@@ -14,13 +16,12 @@ from models import AboutUser, HttpRequestLog
 class ViewInfoAboutMe(DetailView):
     """CBV for viewing info about me"""
 
-    model = AboutUser
+    template_name = u'hello/index.html'
+    context_object_name = u'about_me'
 
     def get_object(self, queryset=None):
         return AboutUser.objects.get(username=u"cifer")
 
-    template_name = u'hello/index.html'
-    context_object_name = u'about_me'
 
 
 class HttpRequestList(ListView):
@@ -34,8 +35,8 @@ class HttpRequestList(ListView):
 class EditInfoAboutMe(UpdateView):
 
     model = AboutUser
+    form_class = EditInfoForm
     template_name = u'hello/edit_info.html'
-    success_url = reverse_lazy(u'index')
 
     def get_object(self, queryset=None):
         return AboutUser.objects.get(username=u'cifer')
