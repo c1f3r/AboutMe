@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% block title %}About Me{% endblock %}
 {% block content %}
-    <div class="row">
-        <div class="col-xs-9">
-            <h1 class="text-center">42 Coffee Cups Test Assignment</h1>
-        </div>
-    <div class="col-xs-3">
-        {% if user.is_authenticated %}
-            Hello, {{ user.username }}. <a href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
-        {% else %}
-             <a href="{% url 'login' %}?next={{ request.path }}">Login</a>
-        {% endif %}
-    </div>
-    </div>
     <div class="container">
+        <div class="row">
+            <div class="col-xs-9">
+                <h1>42 Coffee Cups Test Assignment</h1>
+            </div>
+            <div class="col-xs-3">
+                {% if user.is_authenticated %}
+                    Hello, {{ user.username }}. <a href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}?next={{ request.path }}">Login</a>
+                {% endif %}
+            </div>
+        </div>
         <div class="row">
             <div class="col-xs-6">
                 <p><b>First Name:</b> {{ about_me.first_name }}</p>
