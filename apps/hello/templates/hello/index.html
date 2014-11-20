@@ -25,11 +25,14 @@
                 <p><b>Bio:</b><br/>{{ about_me.bio | linebreaksbr }}</p>
 
                 <p><b>Avatar:</b></p>
-                {% if about_me.avatar %}
-                    <img src="{{ about_me.avatar.url }}">
-                {% else %}
-                    <img src="{{ settings.MEDIA_URL }}img/no-avatar.jpg">
-                {% endif %}
+
+                <div class="img-thumbnail text-center">
+                    {% if about_me.avatar %}
+                        <img src="{{ about_me.avatar.url }}">
+                    {% else %}
+                        <img src="{{ settings.MEDIA_URL }}img/no-avatar.jpg">
+                    {% endif %}
+                </div>
 
 
             </div>
@@ -47,7 +50,7 @@
                 <p><b>Other contacts:</b><br/>{{ about_me.other_contacts | linebreaksbr }}</p>
             </div>
         </div>
-
+        <br>
         <div class="row">
             <div class="col-xs-6">
                 <a href="{% url 'requests' %}">10 Latest Requests</a>
