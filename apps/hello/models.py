@@ -18,6 +18,7 @@ class AboutUser(models.Model):
     jabber = models.CharField(u'Jabber', max_length=50, blank=True)
     skype = models.CharField(u'Skype', max_length=50, blank=True)
     other_contacts = models.TextField(u'Other Contacts', blank=True)
+    avatar = models.ImageField(u'Avatar', upload_to='img', blank=True, null=True)
 
     def __unicode__(self):
         return "{0} {1}".format(self.first_name, self.last_name)
