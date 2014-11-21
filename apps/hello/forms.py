@@ -9,8 +9,8 @@ class EditInfoForm(forms.ModelForm):
         model = AboutUser
         exclude = ['username']
 
-    birth_date = forms.DateField(widget=DatePickerWidget(params="dateFormat: 'dd.mm.yy', "
-                                                                "changeYear: true, defaultDate: '-37y', "
-                                                                "yearRange: 'c-15:c+15'",
+    birth_date = forms.DateField(widget=DatePickerWidget(params="dateFormat: 'dd.mm.yy', changeYear: true, "
+                                                                "changeMonth: true, defaultDate: '-28y', "
+                                                                "yearRange: 'c-80:c+28'",
                                                          attrs={'class': 'datepicker'}))
 

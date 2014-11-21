@@ -2,6 +2,13 @@
 {% block title %}Edit info about me{% endblock %}
 {% block content %}
     {{form.media}}
+    <style type="text/css">
+.ui-datepicker {
+    background: #333;
+    border: 1px solid #555;
+    color: #EEE;
+}
+</style>
     {% load widget_tweaks %}
     <div class="container">
         <h1 class="text-center">Edit info about me</h1>
