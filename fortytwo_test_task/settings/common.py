@@ -44,7 +44,7 @@ INSTALLED_APPS = (
 
     'apps.hello',
     'south',
-    'widget_tweaks'
+    'widget_tweaks',
 )
 
 MIDDLEWARE_CLASSES = (

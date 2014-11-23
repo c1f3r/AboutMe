@@ -13,6 +13,8 @@ class DatePickerWidget(forms.DateInput):
         js = (
             staticfiles_storage.url('js/jquery-1.11.1.min.js'),
             staticfiles_storage.url('js/jquery-ui.min.js'),
+            staticfiles_storage.url('js/jquery.form.min.js'),
+            staticfiles_storage.url('js/form.js'),
         )
 
     def __init__(self, params='', attrs=None):

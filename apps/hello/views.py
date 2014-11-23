@@ -1,11 +1,15 @@
+import json
+
 from PIL import Image
+from django.core.urlresolvers import reverse_lazy
+from django.http.response import HttpResponse
 from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
 from forms import EditInfoForm
-
 from models import AboutUser, HttpRequestLog
+
 
 
 
@@ -32,11 +36,44 @@ class HttpRequestList(ListView):
         return HttpRequestLog.objects.order_by('-date_time')[:10]
 
 
-class EditInfoAboutMe(UpdateView):
+class AjaxableResponseMixin(object):
+    """
+    Mixin to add AJAX support to a form.
+    Must be used with an object-based FormView (e.g. CreateView)
+    """
+    def render_to_json_response(self, context, **response_kwargs):
+        data = json.dumps(context)
+        response_kwargs['content_type'] = 'application/json'
+        return HttpResponse(data, **response_kwargs)
+
+    def form_invalid(self, form):
+        response = super(AjaxableResponseMixin, self).form_invalid(form)
+        if self.request.is_ajax():
+            return self.render_to_json_response(form.errors, status=400)
+        else:
+            return response
+
+    def form_valid(self, form):
+        # We make sure to call the parent's form_valid() method because
+        # it might do some processing (in the case of CreateView, it will
+        # call form.save() for example).
+        response = super(AjaxableResponseMixin, self).form_valid(form)
+        if self.request.is_ajax():
+            data = {
+                'pk': self.object.pk,
+
+            }
+            return self.render_to_json_response(data)
+        else:
+            return response
+
+
+class EditInfoAboutMe(AjaxableResponseMixin, UpdateView):
 
     model = AboutUser
     form_class = EditInfoForm
     template_name = u'hello/edit_info.html'
+    success_url = reverse_lazy(u'edit_info')
 
     def get_object(self, queryset=None):
         return AboutUser.objects.get(username=u'cifer')
