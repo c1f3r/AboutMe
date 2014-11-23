@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
-from models import HttpRequestLog, AboutUser
+from models import HttpRequestLog, AboutUser, Event
 
 
 class IndexTest(TestCase):
@@ -62,7 +62,6 @@ class TestHttpRequests(TestCase):
 
 
 class TestSettingsContextProcessor(TestCase):
-
     def test_settings_context_processor(self):
         response = self.client.get(reverse(u'index'))
         self.assertTrue(response.context[u'settings'])
@@ -71,7 +70,6 @@ class TestSettingsContextProcessor(TestCase):
 
 
 class TestEditInfoPage(TestCase):
-
     def test_only_authorized_access(self):
         response = self.client.get(reverse(u'edit_info'))
         self.assertEqual(response.status_code, 302)
@@ -84,3 +82,33 @@ class TestEditInfoPage(TestCase):
         response = self.client.post(reverse(u'edit_info'), {'birth_date': 'today'})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['form']['birth_date'].errors, [u'Enter a valid date.'])
+
+
+class EventTest(TestCase):
+    fixtures = ['initial_data.json']
+
+    def test_create_signal(self):
+        Event.objects.all().delete()
+        about_me = AboutUser.objects.get(username=u"cifer")
+        self.assertEqual(about_me.first_name, u'Artem')
+        self.assertEqual(Event.objects.all().count(), 0)
+        AboutUser.objects.create(username=u'petryk', first_name=u'Petryk', last_name=u'Pyato4kin',
+                                 birth_date='2000-01-01',
+                                 bio='I was born with the wrong sign in the wrong house\nWith the wrong ascendancy',
+                                 email='p.pyato4kin@example.com', jabber='p.pyato4kin@42cc.co', skype='p.pyato4kin',
+                                 other_contacts='')
+        self.assertEqual(AboutUser.objects.all().count(), 2)
+        self.assertEqual(Event.objects.get(pk=1).action, 'create')
+
+    def test_update_signal(self):
+        Event.objects.all().delete()
+        about_me = AboutUser.objects.get(pk=1)
+        about_me.username = u'root'
+        about_me.save()
+        self.assertEqual(about_me.username, u'root')
+        self.assertEqual(Event.objects.get(pk=1).action, 'update')
+
+    def test_delete_signal(self):
+        Event.objects.all().delete()
+        AboutUser.objects.all().delete()
+        self.assertEqual(Event.objects.get(pk=1).action, 'delete')
