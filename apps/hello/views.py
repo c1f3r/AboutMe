@@ -1,4 +1,5 @@
 import json
+import django_tables2 as tables
 
 from PIL import Image
 from django.core.urlresolvers import reverse_lazy
@@ -27,20 +28,35 @@ class ViewInfoAboutMe(DetailView):
         return AboutUser.objects.get(username=u"cifer")
 
 
+class HttpRequestLogTable(tables.Table):
+    class Meta:
+        model = HttpRequestLog
+        order_by = '-date_time'
+        attrs = {'class': 'paleblue'}
 
+
+class HttpRequestList(tables.SingleTableView):
+    model = HttpRequestLog
+    table_class = HttpRequestLogTable
+    context_table_name = u'requests'
+    table_pagination = {'per_page': 10}
+
+    template_name = u'hello/requests.html'
+    '''
 class HttpRequestList(ListView):
     template_name = u'hello/requests.html'
     context_object_name = u'requests'
 
     def get_queryset(self):
-        return HttpRequestLog.objects.order_by('-date_time')[:10]
-
+        return HttpRequestLogTable(HttpRequestLog.objects.all())
+'''
 
 class AjaxableResponseMixin(object):
     """
     Mixin to add AJAX support to a form.
     Must be used with an object-based FormView (e.g. CreateView)
     """
+
     def render_to_json_response(self, context, **response_kwargs):
         data = json.dumps(context)
         response_kwargs['content_type'] = 'application/json'
@@ -69,7 +85,6 @@ class AjaxableResponseMixin(object):
 
 
 class EditInfoAboutMe(AjaxableResponseMixin, UpdateView):
-
     model = AboutUser
     form_class = EditInfoForm
     template_name = u'hello/edit_info.html'

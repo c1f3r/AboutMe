@@ -1,7 +1,5 @@
 from django.contrib.auth.models import User
 from django.db import models
-
-# Create your models here.
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 
@@ -39,6 +37,8 @@ class HttpRequestLog(models.Model):
 
     def __unicode__(self):
         return u"{0}{1} at {2}".format(self.host, self.path, self.date_time)
+
+
 
 
 class Event(models.Model):

@@ -45,6 +45,8 @@ INSTALLED_APPS = (
     'apps.hello',
     'south',
     'widget_tweaks',
+    'django_tables2',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,7 +58,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'apps.hello.middleware.HttpRequestLogMiddleware',
 )
-
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
