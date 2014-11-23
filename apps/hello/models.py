@@ -25,7 +25,6 @@ class AboutUser(models.Model):
         return "{0} {1}".format(self.first_name, self.last_name)
 
 
-
 class HttpRequestLog(models.Model):
     '''
         model which stores HttpRequest info
@@ -39,6 +38,7 @@ class HttpRequestLog(models.Model):
     def __unicode__(self):
         return u"{0}{1} at {2}".format(self.host, self.path, self.date_time)
 
+
 class Event(models.Model):
     time = models.DateTimeField('Date/Time', auto_now=True)
     action = models.CharField('Action', max_length=20)
@@ -49,6 +49,7 @@ class Event(models.Model):
 
     def __unicode__(self):
         return self.model
+
 
 @receiver(post_save)
 def post_save_signal(sender, created, **kwargs):
