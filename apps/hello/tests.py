@@ -112,3 +112,20 @@ class EventTest(TestCase):
         Event.objects.all().delete()
         AboutUser.objects.all().delete()
         self.assertEqual(Event.objects.get(pk=1).action, 'delete')
+
+
+
+
+class TestPriority(TestCase):
+
+    def test_priority(self):
+        self.client.get(reverse(u'index'))
+        self.assertEqual(HttpRequestLog.objects.all().count(), 1)
+        response = self.client.get(reverse(u'requests'))
+        self.assertContains(response, 'Priority')
+        http_request = HttpRequestLog.objects.get(pk=1)
+        http_request.priority = 3
+        http_request.save()
+        self.client.get(reverse(u'requests'))
+        self.assertEqual(HttpRequestLog.objects.get(pk=1).priority, 3)
+        self.assertEqual(HttpRequestLog.objects.get(pk=2).priority, 1)
