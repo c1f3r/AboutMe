@@ -12,7 +12,7 @@ class AboutUserAdmin(admin.ModelAdmin):
 
 class HttpRequestLogAdmin(admin.ModelAdmin):
     model = HttpRequestLog
-    list_display = ('user', 'host', 'path', 'method', 'date_time')
+    list_display = ('priority', 'user', 'host', 'path', 'method', 'date_time')
 
 class EventAdmin(admin.ModelAdmin):
     model = Event

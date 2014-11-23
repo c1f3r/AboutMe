@@ -29,11 +29,13 @@ class HttpRequestLog(models.Model):
     '''
         model which stores HttpRequest info
     '''
+    PRIORITY_CHOICES = [(i, i) for i in xrange(1, 6)]
     host = models.CharField(u'Host', max_length=100)
     path = models.CharField(u'Full Path', max_length=255)
     date_time = models.DateTimeField(u'Date/Time of Request', auto_now_add=True)
     method = models.CharField(u'Method', max_length=4)  # len('POST') == 4
     user = models.ForeignKey(User, blank=True, null=True)
+    priority = models.IntegerField(u'Priority', max_length=3, choices=PRIORITY_CHOICES, default=1)
 
     def __unicode__(self):
         return u"{0}{1} at {2}".format(self.host, self.path, self.date_time)
