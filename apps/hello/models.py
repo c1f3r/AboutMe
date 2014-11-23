@@ -2,6 +2,8 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
 
 
 class AboutUser(models.Model):
@@ -36,3 +38,27 @@ class HttpRequestLog(models.Model):
 
     def __unicode__(self):
         return u"{0}{1} at {2}".format(self.host, self.path, self.date_time)
+
+class Event(models.Model):
+    time = models.DateTimeField('Date/Time', auto_now=True)
+    action = models.CharField('Action', max_length=20)
+    model = models.CharField('Model', max_length=50)
+
+    class Meta:
+        ordering = ['-time']
+
+    def __unicode__(self):
+        return self.model
+
+@receiver(post_save)
+def post_save_signal(sender, created, **kwargs):
+    if created and sender.__name__ != 'Event':
+        Event.objects.create(model=sender.__name__, action='create')
+    elif not created and sender.__name__ != 'Event':
+        Event.objects.create(model=sender.__name__, action='update')
+
+
+@receiver(post_delete)
+def post_delete_signal(sender, **kwargs):
+    if sender.__name__ != 'Event':
+        Event.objects.create(model=sender.__name__, action='delete')

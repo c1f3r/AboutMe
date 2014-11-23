@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from models import AboutUser, HttpRequestLog
+from models import AboutUser, HttpRequestLog, Event
 
 # Register your models here.
 
@@ -14,5 +14,11 @@ class HttpRequestLogAdmin(admin.ModelAdmin):
     model = HttpRequestLog
     list_display = ('user', 'host', 'path', 'method', 'date_time')
 
+class EventAdmin(admin.ModelAdmin):
+    model = Event
+    list_display = ['model', 'action', 'time']
+    search_fields = ['model']
+
 admin.site.register(AboutUser, AboutUserAdmin)
 admin.site.register(HttpRequestLog, HttpRequestLogAdmin)
+admin.site.register(Event, EventAdmin)
