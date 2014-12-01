@@ -1,5 +1,8 @@
+from StringIO import StringIO
+from django.core.management import call_command
 from django.core.urlresolvers import reverse
 from django.test import TestCase
+import sys
 
 from models import HttpRequestLog, AboutUser
 
@@ -84,3 +87,27 @@ class TestEditInfoPage(TestCase):
         response = self.client.post(reverse(u'edit_info'), {'birth_date': 'today'})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['form']['birth_date'].errors, [u'Enter a valid date.'])
+
+
+class TestManagementCommand(TestCase):
+    fixtures = [u'initial_data.json']
+
+    def test_list_models_command(self):
+        err = out = StringIO()
+        sys.stdout = out
+        sys.stderr = err
+        call_command(u"list_models")
+        # call_command(u"list_models", stdout=out, stderr=err)  # this didnt work, wonder why
+        self.assertTrue("Model AboutUser has 1 objects" in out.getvalue())
+        self.assertTrue("Model HttpRequestLog has 0 objects" in out.getvalue())
+        self.assertTrue("error: Model AboutUser has 1 objects" in err.getvalue())
+        self.assertTrue("error: Model HttpRequestLog has 0 objects" in err.getvalue())
+        self.client.get(reverse(u'index'))
+        call_command(u"list_models")
+        self.assertTrue("Model AboutUser has 1 objects" in out.getvalue())
+        self.assertTrue("Model HttpRequestLog has 1 objects" in out.getvalue())
+        self.assertTrue("error: Model AboutUser has 1 objects" in err.getvalue())
+        self.assertTrue("error: Model HttpRequestLog has 1 objects" in err.getvalue())
+
+
+        # self.assertTrue("error: Model AboutUser has 1 objects" in sys.stderr)
