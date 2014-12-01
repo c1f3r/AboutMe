@@ -55,7 +55,7 @@ class TestHttpRequests(TestCase):
         response = self.client.get(reverse(u'requests'))
         self.assertEqual(requests.count(), 21)
         # self.assertEqual(response.context[u'requests'].count(), 10)
-        self.assertContains(response, '<tr', 11)  # checks if 10 requests displayed
+        self.assertContains(response, '<tr', 11)  # checks if 10 last requests displayed
         latest_ten_requests = HttpRequestLog.objects.order_by(u'-date_time')[:10]
         for i in xrange(10):
             self.assertContains(response, latest_ten_requests[i].id)
