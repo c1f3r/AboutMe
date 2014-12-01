@@ -108,6 +108,3 @@ class TestManagementCommand(TestCase):
         self.assertTrue("Model HttpRequestLog has 1 objects" in out.getvalue())
         self.assertTrue("error: Model AboutUser has 1 objects" in err.getvalue())
         self.assertTrue("error: Model HttpRequestLog has 1 objects" in err.getvalue())
-
-
-        # self.assertTrue("error: Model AboutUser has 1 objects" in sys.stderr)
