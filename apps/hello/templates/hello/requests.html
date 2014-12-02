@@ -3,7 +3,9 @@
 {% block title %}Latest 10 HttpRequests{% endblock %}
 
 {% block content %}
-    <h1>First 10 HttpRequests</h1>
+    <div class="row">
+        <h1>First 10 HttpRequests</h1>
+    </div>
     <div class="row">
         <div class="col-xs-12 text-center">
             {% render_table requests %}
