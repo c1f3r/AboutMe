@@ -72,7 +72,7 @@ class TestHttpRequests(TestCase):
 
     def test_only_ten_latest_requests_are_displayed(self):
         """
-        Tests if only 10 latest are displayed. Rewritten when added django-tables2 due to last (13) ticket
+        Tests if only 10 first are displayed. Rewritten when added django-tables2 due to last (13) ticket
         """
         for i in range(10):
             self.client.get(reverse(u'index'))
@@ -82,7 +82,7 @@ class TestHttpRequests(TestCase):
         self.assertEqual(requests.count(), 21)
         # self.assertEqual(response.context[u'requests'].count(), 10)
         self.assertContains(response, '<tr', 11)  # checks if 10 requests displayed
-        latest_ten_requests = HttpRequestLog.objects.order_by(u'-date_time')[:10]
+        latest_ten_requests = HttpRequestLog.objects.order_by(u'date_time')[:10]
         for i in xrange(10):
             self.assertContains(response, latest_ten_requests[i].id)
             self.assertContains(response, latest_ten_requests[i].path)

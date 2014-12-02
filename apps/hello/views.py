@@ -31,7 +31,7 @@ class ViewInfoAboutMe(DetailView):
 class HttpRequestLogTable(tables.Table):
     class Meta:
         model = HttpRequestLog
-        order_by = '-date_time'
+        order_by = 'date_time'
         attrs = {'class': 'paleblue'}
 
 
