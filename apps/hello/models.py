@@ -2,12 +2,12 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext, ugettext_lazy as _
 
 
 class AboutUser(models.Model):
     '''
-        model in which data about me is stored
+    model in which data about me is stored
     '''
     username = models.CharField(_(u'Username'), max_length=20, blank=False)
     first_name = models.CharField(_(u'First Name'), max_length=50, blank=False)

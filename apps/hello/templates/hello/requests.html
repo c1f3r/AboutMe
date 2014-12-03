@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% load render_table from django_tables2%}
 {% load i18n %}
-{% block title %}First 10 HttpRequests{% endblock %}
+{% block title %}{%  trans "First 10 HttpRequests" %}{% endblock %}
 
 {% block content %}
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h1>First 10 HttpRequests</h1>
+                <h1>{% trans "First 10 HttpRequests" %}</h1>
             </div>
         </div>
         <div class="row">

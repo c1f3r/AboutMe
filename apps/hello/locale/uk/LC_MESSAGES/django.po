@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-03 12:10+0000\n"
+"POT-Creation-Date: 2014-12-03 15:15+0200\n"
 "PO-Revision-Date: 2014-12-03 13:55+0300\n"
 "Last-Translator: Artem Antsyferov <artem.antsyferov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,130 +19,140 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: apps/hello/models.py:12
+#: models.py:12
 msgid "Username"
 msgstr "Ім’я користувача"
 
-#: apps/hello/models.py:13
+#: models.py:13
 msgid "First Name"
 msgstr "Ім’я"
 
-#: apps/hello/models.py:14
+#: models.py:14
 msgid "Last Name"
 msgstr "Прізвище"
 
-#: apps/hello/models.py:15
+#: models.py:15
 msgid "Birth Date"
 msgstr "Дата народження"
 
-#: apps/hello/models.py:16
+#: models.py:16
 msgid "Bio"
 msgstr "Біографія"
 
-#: apps/hello/models.py:17
+#: models.py:17
 msgid "Email"
 msgstr "Електронна пошта"
 
-#: apps/hello/models.py:18
+#: models.py:18
 msgid "Jabber"
 msgstr "Jabber"
 
-#: apps/hello/models.py:19
+#: models.py:19
 msgid "Skype"
 msgstr "Skype"
 
-#: apps/hello/models.py:20
+#: models.py:20
 msgid "Other Contacts"
 msgstr "Інші контакти"
 
-#: apps/hello/models.py:21
+#: models.py:21
 msgid "Avatar"
 msgstr "Аватар"
 
-#: apps/hello/models.py:27
+#: models.py:27
 msgid "About User"
 msgstr "Про користувача"
 
-#: apps/hello/models.py:38
+#: models.py:38
 msgid "Host"
 msgstr "Хост"
 
-#: apps/hello/models.py:39
+#: models.py:39
 msgid "Full Path"
 msgstr "Повний путь"
 
-#: apps/hello/models.py:40
+#: models.py:40
 msgid "Date/Time of Request"
 msgstr "Дата/час запиту"
 
-#: apps/hello/models.py:41
+#: models.py:41
 msgid "Method"
 msgstr "Метод"
 
-#: apps/hello/models.py:43
+#: models.py:43
 msgid "Priority"
 msgstr "Пріоритет"
 
-#: apps/hello/models.py:49
+#: models.py:49
 msgid "Http Request Log"
 msgstr "Журнал Http запита"
 
-#: apps/hello/models.py:53
+#: models.py:53
 msgid "Date/Time"
 msgstr "Дата/час"
 
-#: apps/hello/models.py:54
+#: models.py:54
 msgid "Action"
 msgstr "Дія"
 
-#: apps/hello/models.py:55
+#: models.py:55
 msgid "Model"
 msgstr "Модель"
 
-#: apps/hello/models.py:58
+#: models.py:58
 msgid "Event"
 msgstr "Подія"
 
-#: apps/hello/templates/hello/index.html:3
-msgid "About Me"
-msgstr "Про мене"
-
-#: apps/hello/templates/hello/index.html:8
+#: templates/hello/edit_info.html:9 templates/hello/index.html:8
 msgid "42 Coffee Cups Test Assignment"
 msgstr "Тестове задання 42 Coffee Cups"
 
-#: apps/hello/templates/hello/index.html:12
+#: templates/hello/edit_info.html:126
+#, fuzzy
+msgid "First 10 Requests"
+msgstr "Перші 10 запитів"
+
+#: templates/hello/edit_info.html:128
+msgid "Required fields"
+msgstr "Обов’язкові поля"
+
+#: templates/hello/index.html:3
+msgid "About Me"
+msgstr "Про мене"
+
+#: templates/hello/index.html:12
 msgid "Edit"
 msgstr "Редагувати"
 
-#: apps/hello/templates/hello/index.html:14 templates/base.html:31
+#: templates/hello/index.html:14
 msgid "Logout"
 msgstr "Вийти"
 
-#: apps/hello/templates/hello/index.html:16 templates/base.html:34
+#: templates/hello/index.html:16
 msgid "Login"
 msgstr "Увійти"
 
-#: apps/hello/templates/hello/index.html:45
+#: templates/hello/index.html:45
 msgid "Contacts"
 msgstr "Контакти"
 
-#: templates/404.html:4 templates/404.html.py:7
-msgid "Page Not Found"
-msgstr "Сторінку не знайдено"
+#: templates/hello/index.html:60 templates/hello/requests.html:4
+#: templates/hello/requests.html.py:10
+#, fuzzy
+msgid "First 10 HttpRequests"
+msgstr "Перші 10 запитів"
 
-#: templates/404.html:8
-msgid "The page you are looking for could not be found."
-msgstr "Сторінку, яку ви шукаєте не виходить знайти."
+#~ msgid "Page Not Found"
+#~ msgstr "Сторінку не знайдено"
 
-#: templates/500.html:4 templates/500.html.py:7
-msgid "Error"
-msgstr "Помилка"
+#~ msgid "The page you are looking for could not be found."
+#~ msgstr "Сторінку, яку ви шукаєте не виходить знайти."
 
-#: templates/500.html:8
-msgid "A server error has occurred."
-msgstr "Помилка сервера."
+#~ msgid "Error"
+#~ msgstr "Помилка"
 
-#: templates/base.html:6
-msgid "Site Name"
-msgstr "Назва сайту"
+#~ msgid "A server error has occurred."
+#~ msgstr "Помилка сервера."
+
+#~ msgid "Site Name"
+#~ msgstr "Назва сайту"
