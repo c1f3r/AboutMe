@@ -26,9 +26,6 @@ class AboutUser(models.Model):
     class Meta:
         verbose_name = _(u'About User')
 
-    def meta(self):
-        return self._meta
-
 
 class HttpRequestLog(models.Model):
     '''
