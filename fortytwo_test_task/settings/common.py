@@ -93,12 +93,10 @@ LANGUAGES = (
     ('uk', u'Українська'),
 )
 
-'''
 LOCALE_PATHS = (
     'locale',
      # os.path.join(PROJECT_DIR, 'locale'),
 )
-'''
 
 TIME_ZONE = 'UTC'
 

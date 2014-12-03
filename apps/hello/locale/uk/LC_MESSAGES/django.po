@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-03 15:49+0200\n"
+"POT-Creation-Date: 2014-12-03 16:01+0200\n"
 "PO-Revision-Date: 2014-12-03 13:55+0300\n"
 "Last-Translator: Artem Antsyferov <artem.antsyferov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,45 +63,49 @@ msgstr "Аватар"
 msgid "About User"
 msgstr "Про користувача"
 
-#: models.py:38
+#: models.py:35
 msgid "Host"
 msgstr "Хост"
 
-#: models.py:39
+#: models.py:36
 msgid "Full Path"
 msgstr "Повний путь"
 
-#: models.py:40
+#: models.py:37
 msgid "Date/Time of Request"
 msgstr "Дата/час запиту"
 
-#: models.py:41
+#: models.py:38
 msgid "Method"
 msgstr "Метод"
 
-#: models.py:43
+#: models.py:40
 msgid "Priority"
 msgstr "Пріоритет"
 
-#: models.py:49
+#: models.py:46
 msgid "Http Request Log"
 msgstr "Журнал Http запита"
 
-#: models.py:53
+#: models.py:50
 msgid "Date/Time"
 msgstr "Дата/час"
 
-#: models.py:54
+#: models.py:51
 msgid "Action"
 msgstr "Дія"
 
-#: models.py:55
+#: models.py:52
 msgid "Model"
 msgstr "Модель"
 
-#: models.py:58
+#: models.py:55
 msgid "Event"
 msgstr "Подія"
+
+#: templates/hello/edit_info.html:3
+msgid "Edit info about me"
+msgstr "Редагувати інфо про мене"
 
 #: templates/hello/edit_info.html:9 templates/hello/index.html:8
 msgid "42 Coffee Cups Test Assignment"
