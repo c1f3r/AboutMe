@@ -46,7 +46,6 @@ class IndexTest(TestCase):
         """
         self.client.login(username=u'admin', password=u'admin')
         response = self.client.get(reverse(u'index'))
-        # self.assertContains(response, '<a href="/admin/hello/aboutuser/1/">(admin)</a>')
         self.assertContains(response, '/admin/hello/aboutuser/1/">(admin)</a>')
 
 
@@ -81,14 +80,12 @@ class TestHttpRequests(TestCase):
         requests = HttpRequestLog.objects.all()
         response = self.client.get(reverse(u'requests'))
         self.assertEqual(requests.count(), 21)
-        # self.assertEqual(response.context[u'requests'].count(), 10)
         self.assertContains(response, '<tr', 11)  # checks if 10 requests displayed
         latest_ten_requests = HttpRequestLog.objects.order_by(u'date_time')[:10]
         for i in xrange(10):
             self.assertContains(response, latest_ten_requests[i].id)
             self.assertContains(response, latest_ten_requests[i].path)
             self.assertContains(response, latest_ten_requests[i].host)
-            # self.assertEqual(latest_ten_requests[i].date_time, response.context[u'requests'][i].date_time)
 
 
 class TestSettingsContextProcessor(TestCase):
