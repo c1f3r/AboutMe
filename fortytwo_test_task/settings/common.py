@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 Django settings for fortytwo_test_task project.
 
@@ -51,12 +52,14 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'apps.hello.middleware.HttpRequestLogMiddleware',
+
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -85,6 +88,16 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
+LANGUAGES = (
+    ('en-us', u'English'),
+    ('uk', u'Українська'),
+)
+'''
+LOCALE_PATHS = (
+    'locale',
+    # os.path.join(PROJECT_DIR, 'locale'),
+)
+'''
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
