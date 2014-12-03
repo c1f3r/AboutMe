@@ -64,8 +64,11 @@ MIDDLEWARE_CLASSES = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.i18n',
     "django.core.context_processors.request",
     'apps.hello.context_processors.settings_context_processor',
+
+
 )
 
 ROOT_URLCONF = 'fortytwo_test_task.urls'
@@ -86,10 +89,10 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 LANGUAGES = (
-    ('en-us', u'English'),
+    ('en', u'English'),
     ('uk', u'Українська'),
 )
 
