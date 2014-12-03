@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'south',
     'widget_tweaks',
     'django_tables2',
+    'apps.common_tags',
 
 )
 
