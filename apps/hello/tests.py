@@ -70,7 +70,7 @@ class TestHttpRequests(TestCase):
         http_requests = HttpRequestLog.objects.all()
         self.assertEqual(http_requests.count(), 1)
 
-    def test_only_ten_latest_requests_are_displayed(self):
+    def test_only_ten_first_requests_are_displayed(self):
         """
         Tests if only 10 first are displayed. Rewritten when added django-tables2 due to last (13) ticket
         """
