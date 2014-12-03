@@ -1,33 +1,33 @@
 {% extends 'base.html' %}
-{% load edit_link %}
-{% block title %}About Me{% endblock %}
+{% load edit_link i18n verbose_names%}
+{% block title %}{% trans "About Me" %}{% endblock %}
 {% block content %}
     <div class="container">
         <div class="row">
             <div class="col-xs-6">
-                <h1>42 Coffee Cups Test Assignment</h1>
+                <h1>{% trans "42 Coffee Cups Test Assignment" %}</h1>
             </div>
             <div class="col-xs-3" style="padding-top: 20px;">
                 {% if user.is_authenticated %}
                     <a href="{% url 'edit_info' %}">Edit</a> |
                     <a href="{%edit_link about_me%}">(admin)</a> |
-                    <a href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
+                    <a href="{% url 'logout' %}?next={{ request.path }}">{% trans "Logout" %}</a>
                 {% else %}
-                    <a href="{% url 'login' %}?next={{ request.path }}">Login</a>
+                    <a href="{% url 'login' %}?next={{ request.path }}">{% trans "Login" %}</a>
                 {% endif %}
             </div>
         </div>
         <div class="row">
             <div class="col-xs-6">
-                <p><b>First Name:</b> {{ about_me.first_name }}</p>
+                <p><b>{% get_verbose_field_name about_me "first_name" %}:</b> {{ about_me.first_name }}</p>
 
-                <p><b>Last Name:</b> {{ about_me.last_name }}</p>
+                <p><b>{% get_verbose_field_name about_me "last_name" %}:</b> {{ about_me.last_name }}</p>
 
-                <p><b>Date of Birth:</b> {{ about_me.birth_date }}</p>
+                <p><b>{% get_verbose_field_name about_me "birth_date" %}:</b> {{ about_me.birth_date }}</p>
 
-                <p><b>Bio:</b><br/>{{ about_me.bio | linebreaksbr }}</p>
+                <p><b>{% get_verbose_field_name about_me "bio" %}:</b><br/>{{ about_me.bio | linebreaksbr }}</p>
 
-                <p><b>Avatar:</b></p>
+                <p><b>{% get_verbose_field_name about_me "avatar" %}:</b></p>
 
                 <div class="img-thumbnail text-center">
                     {% if about_me.avatar %}
@@ -42,11 +42,11 @@
 
             <div class="col-xs-6">
 
-                <p><b>Contacts:</b></p>
+                <p><b>{% trans "Contacts" %}:</b></p>
 
-                <p><b>Email:</b> {{ about_me.email | urlize }}</p>
+                <p><b>{% get_verbose_field_name about_me "first_name" %}:</b> {{ about_me.email | urlize }}</p>
 
-                <p><b>Jabber:</b> {{ about_me.jabber }}</p>
+                <p><b>{% get_verbose_field_name about_me "first_name" %}:</b> {{ about_me.jabber }}</p>
 
                 <p><b>Skype:</b> {{ about_me.skype }}</p>
 
