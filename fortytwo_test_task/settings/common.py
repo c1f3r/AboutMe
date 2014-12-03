@@ -42,12 +42,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'apps.hello',
     'south',
     'widget_tweaks',
     'django_tables2',
     'apps.common_tags',
+    'rosetta',
 
 )
 
@@ -154,3 +154,7 @@ TEMPLATE_DIRS = (
 
 # Turn off south during test
 SOUTH_TESTS_MIGRATE = False
+
+ROSETTA_MESSAGES_PER_PAGE = 25
+ROSETTA_ENABLE_TRANSLATION_SUGGESTIONS = True
+YANDEX_TRANSLATE_KEY = "trnsl.1.1.20141203T185847Z.47a45312f60b776c.361e6187bf8cb3a1c9848d5e29eb3d802c6e5de5"

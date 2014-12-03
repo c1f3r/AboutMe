@@ -4,6 +4,7 @@ admin.autodiscover()
 
 from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
+from django.conf import settings
 
 urlpatterns = i18n_patterns('',
                             # Examples:
@@ -19,3 +20,9 @@ urlpatterns = i18n_patterns('',
 urlpatterns += patterns('',
                         (r'^i18n/', include('django.conf.urls.i18n')),
 )
+
+
+if 'rosetta' in settings.INSTALLED_APPS:
+    urlpatterns += patterns('',
+        url(r'^rosetta/', include('rosetta.urls')),
+    )
