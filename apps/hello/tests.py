@@ -46,7 +46,8 @@ class IndexTest(TestCase):
         """
         self.client.login(username=u'admin', password=u'admin')
         response = self.client.get(reverse(u'index'))
-        self.assertContains(response, '<a href="/admin/hello/aboutuser/1/">(admin)</a>')
+        # self.assertContains(response, '<a href="/admin/hello/aboutuser/1/">(admin)</a>')
+        self.assertContains(response, '/admin/hello/aboutuser/1/">(admin)</a>')
 
 
 class TestHttpRequests(TestCase):
