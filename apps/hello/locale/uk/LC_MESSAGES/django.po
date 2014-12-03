@@ -113,7 +113,7 @@ msgstr "Редагувати інфо про мене"
 
 #: templates/hello/edit_info.html:9 templates/hello/index.html:8
 msgid "42 Coffee Cups Test Assignment"
-msgstr "Тестове задання 42 Coffee Cups"
+msgstr "Тестове завдання 42 Coffee Cups"
 
 #: templates/hello/edit_info.html:112
 msgid "Save"
