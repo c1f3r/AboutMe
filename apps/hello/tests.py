@@ -143,17 +143,17 @@ class TestManagementCommand(TestCase):
         sys.stderr = err
         call_command(u"list_models")
         # call_command(u"list_models", stdout=out, stderr=err)  # this didnt work, wonder why
-        self.assertIn("Model AboutUser has 1 objects", out.getvalue())
-        self.assertIn("Model AboutUser has 1 objects", out.getvalue())
+        self.assertIn("Model AboutUser has 1 object", out.getvalue())
+        self.assertIn("Model AboutUser has 1 object", out.getvalue())
         self.assertIn("Model HttpRequestLog has 0 objects", out.getvalue())
-        self.assertIn("error: Model AboutUser has 1 objects", err.getvalue())
+        self.assertIn("error: Model AboutUser has 1 object", err.getvalue())
         self.assertIn("error: Model HttpRequestLog has 0 objects", err.getvalue())
         self.client.get(reverse(u'index'))
         call_command(u"list_models")
-        self.assertIn("Model AboutUser has 1 objects", out.getvalue())
-        self.assertIn("Model HttpRequestLog has 1 objects", out.getvalue())
-        self.assertIn("error: Model AboutUser has 1 objects", err.getvalue())
-        self.assertIn("error: Model HttpRequestLog has 1 objects", err.getvalue())
+        self.assertIn("Model AboutUser has 1 object", out.getvalue())
+        self.assertIn("Model HttpRequestLog has 1 object", out.getvalue())
+        self.assertIn("error: Model AboutUser has 1 object", err.getvalue())
+        self.assertIn("error: Model HttpRequestLog has 1 object", err.getvalue())
 
 
 class EventTest(TestCase):
