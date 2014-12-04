@@ -51,11 +51,11 @@ class IndexTest(TestCase):
 
 class TestHttpRequests(TestCase):
     """
-    Class for testing if Latest 10 HttpRequests page and own middleware works well
+    Class for testing if first 10 HttpRequests page and own middleware works well
     """
     def test_requests_page_exists(self):
         """
-        Tests if page containing 10 latest requests exists
+        Tests if page containing 10 first requests exists
         """
         response = self.client.get(reverse(u'requests'))
         self.assertEqual(response.status_code, 200)
@@ -81,11 +81,11 @@ class TestHttpRequests(TestCase):
         response = self.client.get(reverse(u'requests'))
         self.assertEqual(requests.count(), 21)
         self.assertContains(response, '<tr', 11)  # checks if 10 requests displayed
-        latest_ten_requests = HttpRequestLog.objects.order_by(u'date_time')[:10]
+        first_ten_requests = HttpRequestLog.objects.order_by(u'date_time')[:10]
         for i in xrange(10):
-            self.assertContains(response, latest_ten_requests[i].id)
-            self.assertContains(response, latest_ten_requests[i].path)
-            self.assertContains(response, latest_ten_requests[i].host)
+            self.assertContains(response, first_ten_requests[i].id)
+            self.assertContains(response, first_ten_requests[i].path)
+            self.assertContains(response, first_ten_requests[i].host)
 
 
 class TestSettingsContextProcessor(TestCase):
