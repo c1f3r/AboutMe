@@ -8,11 +8,11 @@ from django.utils.safestring import mark_safe
 class DatePickerWidget(forms.DateInput):
     class Media:
         css = {
-            'all': (staticfiles_storage.url('css/jquery-ui.min.css'),)
+            'all': (staticfiles_storage.url('css/jquery-ui.min.new.css'),)
         }
         js = (
             staticfiles_storage.url('js/jquery-1.11.1.min.js'),
-            staticfiles_storage.url('js/jquery-ui.min.new.js'),
+            staticfiles_storage.url('js/jquery-ui.min.js'),
             staticfiles_storage.url('js/jquery.form.min.js'),
             staticfiles_storage.url('js/form.js'),
         )
