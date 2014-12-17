@@ -1,6 +1,9 @@
 MANAGE=django-admin.py
 SETTINGS=fortytwo_test_task.settings
 
+list_models:
+	$(shell ./list_models.sh)
+
 test:
 	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=$(SETTINGS) $(MANAGE) test
 
@@ -16,6 +19,5 @@ migrate:
 collectstatic:
 	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=$(SETTINGS) $(MANAGE) collectstatic --noinput --clear
 
-list_models:
-	./list_models.sh
+
 .PHONY: test syncdb migrate collectstatic list_models
