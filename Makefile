@@ -2,7 +2,7 @@ MANAGE=django-admin.py
 SETTINGS=fortytwo_test_task.settings
 
 list_models:
-	$(shell ./list_models.sh)
+	./list_models.sh
 
 test:
 	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=$(SETTINGS) $(MANAGE) test
