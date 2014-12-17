@@ -1,9 +1,9 @@
 #!/bin/bash
 _now=$(date +"%Y_%m_%d")
 _dir="."
-_cp_dir="uploads/img"
+_cp_dir="uploads/logs"
 _file="$_dir/$_now.dat"
-_cp_file="$_cp_dir/$_now.dat.jpg"
+_cp_file="$_cp_dir/$_now.dat"
 chmod 777 $_dir $_cp_dir
 echo "Starting write to $_file"
 python manage.py list_models 2>> $_file
