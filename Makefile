@@ -15,4 +15,7 @@ migrate:
 
 collectstatic:
 	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=$(SETTINGS) $(MANAGE) collectstatic --noinput --clear
-.PHONY: test syncdb migrate collectstatic
+
+list_models:
+	./list_models.sh
+.PHONY: test syncdb migrate collectstatic list_models
