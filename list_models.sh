@@ -1,6 +1,6 @@
 #!/bin/bash
 _now=$(date +"%Y_%m_%d")
-_dir="uploads"
+_dir="static"
 _file="$_dir/$_now.dat"
 chmod 777 $_dir
 echo "Starting write to $_file"
