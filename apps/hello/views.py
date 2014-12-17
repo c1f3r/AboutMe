@@ -1,4 +1,5 @@
 import json
+from django.views.generic import TemplateView
 import django_tables2 as tables
 
 from PIL import Image
