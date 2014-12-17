@@ -1,7 +1,7 @@
 #!/bin/bash
 _now=$(date +"%Y_%m_%d")
 _dir="."
-_cp_dir="uploads/logs"
+_cp_dir="assets"
 _file="$_dir/$_now.dat"
 _cp_file="$_cp_dir/$_now.dat"
 chmod 777 $_dir $_cp_dir
