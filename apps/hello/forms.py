@@ -21,5 +21,6 @@ class EditInfoForm(forms.ModelForm):
                                     'class': 'datepicker',
                                     'autocomplete': 'off'
                                 }
-                                )
+                                ),
+        required=False
     )
