@@ -1,9 +1,10 @@
-{% load staticfiles i18n strip_lang%}
+{% load staticfiles i18n strip_lang %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}{% endblock title %} | {% trans "Site Name" %}</title>
+    <title>{% block title %}{% endblock title %}
+        | {% trans "Site Name" %}</title>
 
     <meta http-equiv="X-UA-Compatible" content="chrome=IE7"/>
 
@@ -11,22 +12,29 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
 
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" media="screen, projection"/>
-    <link rel="stylesheet" href="{% static 'css/newer_than_newest_screen.css' %}" media="screen, projection"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"
+          media="screen, projection"/>
+    <link rel="stylesheet"
+          href="{% static 'css/newer_than_newest_screen.css' %}"
+          media="screen, projection"/>
 
     {% block extra_head %}{% endblock extra_head %}
 
 </head>
-<body id="{% block body_id %}{% endblock %}" class="{% block body_class %}{% endblock %}">
+<body id="{% block body_id %}{% endblock %}"
+      class="{% block body_class %}{% endblock %}">
 <div class="nav pull-right">
 
     <form action="{% url 'set_language' %}" method="post" class="form-inline">
         {% csrf_token %}
-        <input name="next" type="hidden" value="{{ request.path | strip_lang}}"/>
-        <select onchange="this.form.submit()" class="form-control" name="language">
+        <input name="next" type="hidden"
+               value="{{ request.path | strip_lang }}"/>
+        <select onchange="this.form.submit()" class="form-control"
+                name="language">
             {% get_language_info_list for LANGUAGES as languages %}
             {% for language in languages %}
-                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                <option value="{{ language.code }}"
+                        {% if language.code == LANGUAGE_CODE %}
                         selected="selected"{% endif %}>
                     {{ language.name_local }} ({{ language.code }})
                 </option>
@@ -34,30 +42,6 @@
         </select>
     </form>
 </div>
-{% comment "menu" %}
-    {% block navbar %}
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container">
-                <ul class="nav navbar-nav">
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'admin:index' %}">Admin</a></li>
-                </ul>
-                <div class="navbar-text navbar-right">
-                    {% if user.is_authenticated %}
-                        Hello, {{ user.username }}.<a class="navbar-link"
-                                                      href="{% url 'logout' %}?next={{ request.path }}">{% trans "Logout" %}</a>
-                    {% else %}
-                        {% if request.path != '/accounts/login/' %}
-                            <a class="navbar-link"
-                               href="{% url 'login' %}?next={{ request.path }}">{% trans "Login" %}</a>
-                        {% endif %}
-                    {% endif %}
-                </div>
-
-            </div>
-        </nav>
-    {% endblock %}
-{% endcomment %}
 {% block content %}{% endblock content %}
 </body>
 </html>

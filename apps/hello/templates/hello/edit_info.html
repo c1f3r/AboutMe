@@ -8,7 +8,8 @@
         <h1>{% trans "42 Coffee Cups Test Assignment" %}</h1>
 
         <div class="row">
-            <form enctype="multipart/form-data" action="" method="post" id="edit_info_form">
+            <form enctype="multipart/form-data" action="" method="post"
+                  id="edit_info_form">
                 {% csrf_token %}
                 {{ form.non_field_errors }}
                 <div class="row">
@@ -44,7 +45,8 @@
                                 {{ form.avatar.label_tag }}
                             </div>
                             <div class="col-xs-9">
-                                <input class="form-control" id="id_avatar" name="avatar" type="file"></div>
+                                <input class="form-control" id="id_avatar"
+                                       name="avatar" type="file"></div>
 
                             <div class="row img-thumbnail text-center">
                                 {% if form.avatar.value %}
@@ -108,12 +110,15 @@
 
                 <div class="row">
                     <div class="col-xs-3">
-                        <input type="submit" class="btn btn-success" value="{% trans "Save" %}"/>
+                        <input type="submit" class="btn btn-success"
+                               value="{% trans "Save" %}"/>
                         <a href="{% url 'index' %}">{% trans "Cancel" %}</a>
                     </div>
                     <div class="col-sx-3">
-                        <span id="ajax_progress" class="alert alert-info">{% trans "Loading..." %}</span>
-                        <span id="ajax_success" class="alert alert-success">{% trans "Successfully submitted." %}</span>
+                        <span id="ajax_progress"
+                              class="alert alert-info">{% trans "Loading..." %}</span>
+                        <span id="ajax_success"
+                              class="alert alert-success">{% trans "Successfully submitted." %}</span>
                     </div>
 
 
@@ -124,6 +129,6 @@
         <div class="row">
             <a href="{% url 'requests' %}">{% trans "First 10 HttpRequests" %}</a>
         </div>
-        <div class="row">* {%trans "Required fields" %}</div>
+        <div class="row">* {% trans "Required fields" %}</div>
     </div>
 {% endblock %}

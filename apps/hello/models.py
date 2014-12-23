@@ -20,7 +20,7 @@ class AboutUser(models.Model):
     skype = models.CharField(_(u'Skype'), max_length=50, blank=True)
     other_contacts = models.TextField(_(u'Other Contacts'), blank=True)
     avatar = models.ImageField(_(u'Avatar'), upload_to='img',
-                               default='img/no-avatar.jpg')
+                               blank=True, null=True)
 
     def __unicode__(self):
         return "{0} {1}".format(self.first_name, self.last_name)
