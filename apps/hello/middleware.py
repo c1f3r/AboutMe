@@ -1,7 +1,7 @@
 from apps.hello.models import HttpRequestLog
 
 
-class HttpRequestLogMiddleware:
+class HttpRequestLogMiddleware(object):
     """
     middleware which saves each HttpRequest to DB
     """

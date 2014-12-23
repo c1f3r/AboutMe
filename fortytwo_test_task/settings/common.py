@@ -42,12 +42,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'apps.hello',
     'south',
     'widget_tweaks',
     'django_tables2',
     'apps.common_tags',
+    'django_nose',
 
 )
 
@@ -154,3 +154,13 @@ TEMPLATE_DIRS = (
 
 # Turn off south during test
 SOUTH_TESTS_MIGRATE = False
+
+
+"""
+# Use nose to run all tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+NOSE_ARGS = [
+    '--with-coverage',
+]
+"""

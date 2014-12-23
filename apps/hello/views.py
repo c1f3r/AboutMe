@@ -1,22 +1,16 @@
 import json
-from django.views.generic import TemplateView
-import django_tables2 as tables
 
 from PIL import Image
+
 from django.core.urlresolvers import reverse_lazy
 from django.http.response import HttpResponse
 from django.views.generic.edit import UpdateView
-from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+
+import django_tables2 as tables
 
 from forms import EditInfoForm
 from models import AboutUser, HttpRequestLog
-
-
-
-
-
-# Create your views here.
 
 
 class ViewInfoAboutMe(DetailView):
@@ -41,16 +35,8 @@ class HttpRequestList(tables.SingleTableView):
     table_class = HttpRequestLogTable
     context_table_name = u'requests'
     table_pagination = {'per_page': 10}
-
     template_name = u'hello/requests.html'
-    '''
-class HttpRequestList(ListView):
-    template_name = u'hello/requests.html'
-    context_object_name = u'requests'
 
-    def get_queryset(self):
-        return HttpRequestLogTable(HttpRequestLog.objects.all())
-'''
 
 class AjaxableResponseMixin(object):
     """
@@ -101,4 +87,3 @@ class EditInfoAboutMe(AjaxableResponseMixin, UpdateView):
             img.thumbnail((200, 200), Image.ANTIALIAS)
             img.save(img.filename, "JPEG")
         return super(EditInfoAboutMe, self).form_valid(form)
-

@@ -18,8 +18,6 @@ var enable_form = function () {
 var form_error = function (response) {
     enable_form();
     $('#ajax_success').hide();
-//    console.log(response);
-//    console.log(response.responseText);
     var errors = JSON.parse(response.responseText);
     console.log(errors);
     for (error in errors) {
