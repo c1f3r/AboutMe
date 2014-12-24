@@ -47,8 +47,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'django_tables2',
     'apps.common_tags',
-    'django_nose',
-    'stdimage'
+    'stdimage',
 
 )
 
