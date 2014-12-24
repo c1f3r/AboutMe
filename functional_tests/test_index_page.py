@@ -1,7 +1,17 @@
+from selenium.common.exceptions import NoSuchElementException
 from functional_tests.base import FunctionalTest
 
 
 class TestIndexPage(FunctionalTest):
+
+    fixtures = ['initial_data.json']
+
+    def is_id_present(self, id):
+        try:
+            self.browser.find_element_by_id(id)
+            return True
+        except NoSuchElementException:
+            return False
 
     def test_can_get_to_other_pages(self):
         # User comes to main page and sees info about me
@@ -21,3 +31,8 @@ class TestIndexPage(FunctionalTest):
         password_input.send_keys(u'admin')
         submit_btn.click()
         self.assertIn('About Me', self.browser.title)
+        # After logging in user sees 3 new links and no login link more
+        self.assertTrue(self.is_id_present('edit_info_link'))
+        self.assertTrue(self.is_id_present('admin_edit_link'))
+        self.assertTrue(self.is_id_present('logout_link'))
+        self.assertFalse(self.is_id_present('login_link'))
