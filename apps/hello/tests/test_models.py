@@ -23,6 +23,11 @@ class TestAboutUser(TestCase):
 
 class TestHttpRequestLog(TestCase):
 
+    def test_http_request_log_middleware_works(self):
+        HttpRequestLog.objects.all().delete()
+        self.client.get(reverse(u'admin:index'))
+        self.assertEqual(HttpRequestLog.objects.count(), 1)
+
     def test_http_request_log_string_representation(self):
         self.client.get(reverse(u'admin:index'))
         self.assertRegexpMatches(

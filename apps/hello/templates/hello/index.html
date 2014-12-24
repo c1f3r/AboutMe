@@ -51,7 +51,7 @@
 
                 <div class="img-thumbnail text-center">
                     {% if about_me.avatar %}
-                        <img src="{{ about_me.avatar.url }}">
+                        <img src="{{ about_me.avatar.thumbnail.url }}">
                     {% else %}
                         <img src="{{ settings.MEDIA_URL }}img/no-avatar.jpg">
                     {% endif %}

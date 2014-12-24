@@ -3,6 +3,7 @@ from django.db import models
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
+from stdimage.models import StdImageField
 
 
 class AboutUser(models.Model):
@@ -19,8 +20,9 @@ class AboutUser(models.Model):
     jabber = models.CharField(_(u'Jabber'), max_length=50, blank=True)
     skype = models.CharField(_(u'Skype'), max_length=50, blank=True)
     other_contacts = models.TextField(_(u'Other Contacts'), blank=True)
-    avatar = models.ImageField(_(u'Avatar'), upload_to='img',
-                               blank=True, null=True)
+    avatar = StdImageField(_(u'Avatar'), upload_to='img',
+                           blank=True, null=True,
+                           variations={'thumbnail': (200, 200)})
 
     def __unicode__(self):
         return "{0} {1}".format(self.first_name, self.last_name)

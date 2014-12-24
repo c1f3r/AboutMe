@@ -1,13 +1,13 @@
-import json
-from unittest import skip
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from apps.hello.forms import EditInfoForm
-from apps.hello.models import AboutUser
+from apps.hello.models import AboutUser, HttpRequestLog
 
 
 class TestIndexPage(TestCase):
-
+    """
+    Class for testing main page with info about me
+    """
     fixtures = [u'initial_data.json']
 
     def test_index_page_renders_index_template(self):
@@ -51,7 +51,9 @@ class TestIndexPage(TestCase):
 
 
 class TestEditInfoPage(TestCase):
-
+    """
+    Class for testing page for editing info about me
+    """
     def get_response(self):
         self.client.login(username=u'admin', password=u'admin')
         return self.client.get(reverse(u'edit_info'))
@@ -106,7 +108,37 @@ class TestEditInfoPage(TestCase):
                                      u'birth_date': '23.08.86',
                                      u'email': u'email_without_at'},
                                     HTTP_X_REQUESTED_WITH='XMLHttpRequest')
-        self.assertEquals(response.status_code, 400)
+        self.assertEqual(response.status_code, 400)
         self.assertIn(u'first_name', response.content)
         self.assertIn(u'birth_date', response.content)
         self.assertIn(u'email', response.content)
+
+    def test_edit_info_page_contains_link_to_http_requests_page(self):
+        response = self.get_response()
+        self.assertContains(response, u'id="requests_link')
+
+
+class TestHttpRequestsPage(TestCase):
+    """
+    Class for testing requests page
+    """
+    def test_if_http_requests_page_uses_correct_template(self):
+        response = self.client.get(reverse(u'requests'))
+        self.assertTemplateUsed(response, u'hello/requests.html')
+
+    def test_if_http_requests_page_displays_10_first_requests_in_table(self):
+        for i in xrange(10):
+            self.client.get(reverse(u'index'))
+            self.client.get(reverse(u'admin:index'))
+        response = self.client.get(reverse(u'requests'))
+        self.assertContains(response, u"<tr", 11)
+        first_ten_requests = HttpRequestLog.objects.order_by(u'date_time')[:10]
+        for i in xrange(10):
+            self.assertContains(response, '<td class="id">' +
+                                str(first_ten_requests[i].id) + '</td>')
+            self.assertContains(response, '<td class="path">' +
+                                first_ten_requests[i].path + '</td>')
+            self.assertContains(response, '<td class="host">' +
+                                first_ten_requests[i].host + '</td>')
+            self.assertContains(response, '<td class="priority">' +
+                                str(first_ten_requests[i].priority) + '</td>')

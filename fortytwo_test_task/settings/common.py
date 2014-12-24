@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'django_tables2',
     'apps.common_tags',
     'django_nose',
+    'stdimage'
 
 )
 
@@ -99,7 +100,6 @@ LANGUAGES = (
 
 LOCALE_PATHS = (
     'locale',
-     # os.path.join(PROJECT_DIR, 'locale'),
 )
 
 TIME_ZONE = 'UTC'
@@ -146,7 +146,8 @@ STATICFILES_DIRS = (
 
 # Template Settings
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Put strings here, like "/home/html/django_templates"
+    # or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(BASE_DIR, 'templates'),
@@ -154,11 +155,3 @@ TEMPLATE_DIRS = (
 
 # Turn off south during test
 SOUTH_TESTS_MIGRATE = False
-"""
-# Use nose to run all tests
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-
-NOSE_ARGS = [
-    '--with-coverage',
-]
-"""

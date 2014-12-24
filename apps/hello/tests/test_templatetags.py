@@ -13,6 +13,8 @@ class TestEditLinkTag(TestCase):
         admin_link = edit_link.edit_link(HttpRequestLog.objects.first())
         self.assertIn(u'/admin/hello/httprequestlog/1/', admin_link)
 
+
+class TestVerboseNamesTag(TestCase):
     def test_verbose_names_tag_gives_correct_model_verbose_name(self):
         language = translation.get_language()
         self.client.get(reverse(u'index'))
