@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from models import AboutUser, HttpRequestLog, Event
+from apps.hello.models import AboutUser, HttpRequestLog, Event
 
 # Register your models here.
 

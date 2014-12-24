@@ -8,7 +8,6 @@ class TestAboutUser(TestCase):
 
     fixtures = [u'initial_data.json']
 
-
     def test_about_user_string_representation(self):
         new_user = AboutUser.objects.create(username="petryk",
                                             first_name="Petryk",
@@ -70,7 +69,7 @@ class TestEvent(TestCase):
         AboutUser.objects.get(username=u"cifer").delete()
         self.assertEqual(Event.objects.count(), events_count + 1)
         self.assertEqual(Event.objects.first().action, u'delete')
-        
+
     def test_event_signals_follow_http_request_log_creating(self):
         events_count = Event.objects.count()
         self.client.get(reverse(u"admin:index"))

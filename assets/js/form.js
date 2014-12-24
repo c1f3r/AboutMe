@@ -1,3 +1,5 @@
+$(document).ready(function () {
+
 var disable_form = function () {
     $('input').attr('disabled', true);
     $('textarea').attr('disabled', true);
@@ -19,16 +21,15 @@ var form_error = function (response) {
     enable_form();
     $('#ajax_success').hide();
     var errors = JSON.parse(response.responseText);
-    console.log(errors);
+    var error;
     for (error in errors) {
+        console.log(error, ':', errors[error])
         var id = '#id_' + error;
         $(id).parent('div').addClass('has-error');
         if ($(id).parent('div').find('div.alert').length == 0) {
-            $(id).parent('div').prepend('<div class="alert alert-danger" id=' + error + '"_error_alert">' + errors[error] + '</div>');
+            $(id).parent('div').prepend('<div class="alert alert-danger" id="' + error + '_error_alert">' + errors[error] + '</div>');
         }
-
     }
-
 };
 
 $(function () {
@@ -60,7 +61,7 @@ $(function () {
 });
 
 
-$(document).ready(function () {
+
     var options = {
         beforeSubmit: disable_form,
         success: enable_form,

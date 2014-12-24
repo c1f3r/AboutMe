@@ -9,8 +9,8 @@ from django.views.generic.detail import DetailView
 
 import django_tables2 as tables
 
-from forms import EditInfoForm
-from models import AboutUser, HttpRequestLog
+from apps.hello.forms import EditInfoForm
+from apps.hello.models import AboutUser, HttpRequestLog
 
 
 class ViewInfoAboutMe(DetailView):
@@ -62,11 +62,7 @@ class AjaxableResponseMixin(object):
         # call form.save() for example).
         response = super(AjaxableResponseMixin, self).form_valid(form)
         if self.request.is_ajax():
-            data = {
-                'pk': self.object.pk,
-
-            }
-            return self.render_to_json_response(data)
+            return HttpResponse("OK")
         else:
             return response
 

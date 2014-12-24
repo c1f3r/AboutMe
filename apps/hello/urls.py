@@ -3,7 +3,7 @@ from django.conf.urls import patterns, url
 from django.conf.urls.static import static
 from django.contrib.auth.decorators import login_required
 
-from views import ViewInfoAboutMe, HttpRequestList, EditInfoAboutMe
+from apps.hello.views import ViewInfoAboutMe, HttpRequestList, EditInfoAboutMe
 
 
 urlpatterns = patterns('',

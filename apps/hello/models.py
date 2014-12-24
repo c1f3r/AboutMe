@@ -9,7 +9,7 @@ class AboutUser(models.Model):
     """
     model in which data about me is stored
     """
-    username = models.CharField(_(u'Username'), max_length=20, blank=False,
+    username = models.SlugField(_(u'Username'), max_length=20, blank=False,
                                 unique=True)
     first_name = models.CharField(_(u'First Name'), max_length=50, blank=False)
     last_name = models.CharField(_(u'Last Name'), max_length=50, blank=True)
