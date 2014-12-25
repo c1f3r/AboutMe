@@ -1,7 +1,5 @@
 import json
 
-from PIL import Image
-
 from django.core.urlresolvers import reverse_lazy
 from django.http.response import HttpResponse
 from django.views.generic.edit import UpdateView

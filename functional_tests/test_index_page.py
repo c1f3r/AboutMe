@@ -16,7 +16,11 @@ class TestIndexPage(FunctionalTest):
     def test_can_get_to_other_pages(self):
         # User comes to main page and sees info about me
         self.browser.get(self.server_url)
+        # Get to english version of site if not on it
+        self.browser.find_element_by_xpath(
+            "//select[@name='language']/option[@value='en']").click()
         self.assertIn('About Me', self.browser.title)
+        #
         # Then he clicks on login link and gets to login page
         login_link = self.browser.find_element_by_id("login_link")
         login_link.click()
@@ -36,3 +40,4 @@ class TestIndexPage(FunctionalTest):
         self.assertTrue(self.is_id_present('admin_edit_link'))
         self.assertTrue(self.is_id_present('logout_link'))
         self.assertFalse(self.is_id_present('login_link'))
+        # User
